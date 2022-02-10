@@ -1,26 +1,28 @@
-import React from 'react';
+import React from "react";
+import Header from "./Header";
+import ItemControl from "./ItemControl";
 
 class App extends React.Component {
-  constructor(props){
+
+  constructor(props) {
     super(props);
     this.state = {
       shoppingCart: []
-    }
+    };
   }
 
-  handleCartAddition = (obj) => {
-    const placeholder = this.state.shoppingCart.concat(obj);
-    this.setState({shoppingCart: placeholder});
-  };
-
+  handleCartAddition = (newItem) => {
+    const placeholder = this.state.shoppingCart.concat(newItem);
+    this.setState({
+      shoppingCart: placeholder
+    });
+  }
   
   render(){
     return (
       <React.Fragment>
         <Header />
-        <Main 
-          method = {handleCartAddition}
-        />
+        <ItemControl onCartAddition={this.handleCartAddition} />
       </React.Fragment>
     );
   }
